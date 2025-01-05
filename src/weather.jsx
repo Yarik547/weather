@@ -4,18 +4,18 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function Weather() {
-	const [city, setCity] = useState([]);
+	const [city] = useState([]);
 	useEffect(() => {
 		axios
 			.get(
-				"http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=cd764a982a81e6f46e311304d4072d5b"
+				// "http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid=cd764a982a81e6f46e311304d4072d5b"
+				"https://api.openweathermap.org/data/3.0/onecall?q=London&appid=cd764a982a81e6f46e311304d4072d5b"
 			)
-			.then((response) => {
-				console.log(response.data.city);
-				// console.log(response.status);
-				// console.log(response.statusText);
-				// console.log(response.headers);
-				// console.log(response.config);
+			.then((res) => {
+				console.log(res.data);
+			})
+			.catch((err) => {
+				console.log(err);
 			});
 	});
 
@@ -35,7 +35,7 @@ function Weather() {
 				<p>Today</p>
 				<img src="" alt="" />
 				<h1 id="temp">11C</h1>
-				<h2 id="city">Lviv</h2>
+				<h2 id="city"></h2>
 
 				<div className="box">
 					<span className="info wind">
